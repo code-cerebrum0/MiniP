@@ -1,5 +1,8 @@
 const userModel = require("../models/user.model")
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const { v4: uuidv4 } = require('uuid');
+
 
 // has to implement hashing of passwords
 
@@ -13,11 +16,15 @@ async function registerUser (req, res) {
             message : "User already exists."
         })
     }
+    
+
+    const hash = await bcrypt.hash(password, 7);
+
 
     const user  = await userModel.create({
         fullName,
         email,
-        password,
+        password  : hash,
         dob,
         gender,
         role

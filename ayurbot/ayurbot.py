@@ -14,8 +14,18 @@ llm = ChatOpenAI(
 )
 
 class ReqBody(BaseModel):
-    message :  str
     user_id : str
+    message :  str
+
+
+#-------------------BOT CODE-------------------
+
+
+
+
+
+#-------------------
+
 
 @app.post("/chat")
 async def chat(req : ReqBody):
