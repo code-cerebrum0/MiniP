@@ -52,8 +52,9 @@ async function loginUser (req ,res){
     //login by email and pass and role
 
     const {email, password, role = "patient"}= req.body;
-
+    
     const user = await userModel.findOne({
+        
         email
     })
     if (!user) {
@@ -61,11 +62,8 @@ async function loginUser (req ,res){
             message : "Invalid credentials"
         })
     }
-
-    let isPasswordValid = 0;
-    if (password === user.password){
-        isPasswordValid = 1;
-    }
+    const isPasswordValid = await bcrypt.compare(password, user.password)
+    
     if (!isPasswordValid){
         return res.status(401).json({
             message:"INvalid password"
