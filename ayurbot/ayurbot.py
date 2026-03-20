@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from langchain_openai import ChatOpenAI
+from langgraph.graph.message import add_messages
+from typing import Annotated
 
 
 app = FastAPI()
@@ -13,8 +15,12 @@ llm = ChatOpenAI(
 
 class ReqBody(BaseModel):
     message :  str
+    user_id : str
 
 @app.post("/chat")
 async def chat(req : ReqBody):
     response = llm.invoke(req.message)
     return {"reply" : response.content}
+
+async def load_history(user_id : str):
+    
