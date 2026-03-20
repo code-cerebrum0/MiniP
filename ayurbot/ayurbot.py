@@ -23,4 +23,4 @@ async def chat(req : ReqBody):
     return {"reply" : response.content}
 
 async def load_history(user_id : str):
-    
+    pass
