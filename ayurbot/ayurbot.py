@@ -202,6 +202,7 @@ def is_appointment_booked(state : BotState):
     return {"appointment_booked" : True}
 
 
+
 def book_doctor(state : BotState):
     pass
 
