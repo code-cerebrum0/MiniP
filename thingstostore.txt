@@ -1,0 +1,9 @@
+User Details
+    patient
+    doctor
+
+
+chats or conversations (from python)
+
+
+

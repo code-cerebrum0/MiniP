@@ -1,5 +1,4 @@
 ./backend/node_modules/
 testing/node_modules/
 testing/src/
-
 /ayurbot/__pycache__/*
