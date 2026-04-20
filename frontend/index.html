@@ -5,240 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>AyurBot – Panchakarma Therapy Assistant</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<!-- <style>
-  :root {
-    --green-900: #1a3a2a;
-    --green-800: #1e4d35;
-    --green-700: #2d6a4f;
-    --green-600: #3a8a5e;
-    --green-500: #4caf82;
-    --green-400: #6fcf97;
-    --green-100: #e8f5ee;
-    --green-50:  #f2fbf6;
-    --bg: #f5f7f5;
-    --card: #ffffff;
-    --text: #1a2b22;
-    --text-muted: #6b8f76;
-    --border: #ddeae2;
-    --shadow: 0 2px 16px rgba(30,77,53,0.09);
-    --shadow-lg: 0 8px 32px rgba(30,77,53,0.14);
-    --radius: 16px;
-    --radius-sm: 10px;
-    --nav-h: 68px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-  
-  /* ── SCREENS ── */
-  .screen { display: none; min-height: 100vh; flex-direction: column; }
-  .screen.active { display: flex; }
 
-  /* ── LOGIN ── */
-  #screen-login {
-    background: linear-gradient(160deg, #e8f5ee 0%, #f5f7f5 60%);
-    align-items: center; justify-content: center; padding: 24px;
-  }
-  .login-logo { width: 80px; height: 80px; background: linear-gradient(135deg, var(--green-700), var(--green-500)); border-radius: 22px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 8px 24px rgba(45,106,79,.35); }
-  .login-logo svg { width: 44px; height: 44px; }
-  .login-brand { text-align: center; margin-bottom: 32px; }
-  .login-brand h1 { font-family: 'Fraunces', serif; font-size: 2.2rem; color: var(--green-800); }
-  .login-brand p { color: var(--text-muted); font-size: .95rem; margin-top: 4px; }
-  .login-card { background: var(--card); border-radius: var(--radius); padding: 32px 28px; width: 100%; max-width: 400px; box-shadow: var(--shadow-lg); }
-  .login-card h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.4rem; margin-bottom: 4px; }
-  .login-card .sub { color: var(--text-muted); font-size: .88rem; margin-bottom: 24px; }
-  .input-field { width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 13px 16px; font-size: .95rem; font-family: inherit; color: var(--text); background: var(--green-50); outline: none; transition: border .2s; margin-bottom: 12px; }
-  .input-field:focus { border-color: var(--green-500); }
-  .btn-primary { width: 100%; background: linear-gradient(135deg, var(--green-700), var(--green-600)); color: #fff; border: none; border-radius: var(--radius-sm); padding: 14px; font-size: 1rem; font-family: inherit; font-weight: 600; cursor: pointer; transition: opacity .2s, transform .15s; }
-  .btn-primary:hover { opacity: .92; transform: translateY(-1px); }
-  .btn-primary:active { transform: translateY(0); }
-  .divider { text-align: center; color: var(--text-muted); font-size: .85rem; margin: 14px 0; }
-  .btn-secondary { width: 100%; background: transparent; color: var(--green-700); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 13px; font-size: .95rem; font-family: inherit; font-weight: 500; cursor: pointer; transition: background .2s; }
-  .btn-secondary:hover { background: var(--green-50); }
-  .login-features { display: flex; justify-content: center; gap: 32px; margin-top: 32px; }
-  .login-feat { text-align: center; }
-  .login-feat .icon { width: 40px; height: 40px; border-radius: 50%; background: var(--green-100); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
-  .login-feat span { font-size: .78rem; color: var(--text-muted); }
-  .error-msg { color: #c0392b; font-size: .83rem; margin-top: -6px; margin-bottom: 10px; display: none; }
-
-  /* ── BOTTOM NAV ── */
-  .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: var(--nav-h); background: var(--card); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-around; z-index: 100; box-shadow: 0 -4px 20px rgba(30,77,53,.07); }
-  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; padding: 8px 16px; border-radius: var(--radius-sm); transition: background .2s; min-width: 70px; border: none; background: transparent; }
-  .nav-item svg { width: 22px; height: 22px; stroke: var(--text-muted); fill: none; transition: stroke .2s; }
-  .nav-item span { font-size: .72rem; color: var(--text-muted); font-weight: 500; transition: color .2s; }
-  .nav-item.active { background: var(--green-100); }
-  .nav-item.active svg { stroke: var(--green-700); }
-  .nav-item.active span { color: var(--green-700); }
-
-  /* ── PAGE WRAPPER ── */
-  .page { display: none; flex: 1; overflow-y: auto; padding-bottom: calc(var(--nav-h) + 16px); }
-  .page.active { display: block; }
-
-  /* ── HEADER BANNER ── */
-  .banner { background: linear-gradient(135deg, var(--green-800) 0%, var(--green-600) 100%); color: #fff; padding: 28px 20px 24px; margin: 0; position: relative; overflow: hidden; }
-  .banner::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; background: rgba(255,255,255,.06); border-radius: 50%; }
-  .banner h2 { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; }
-  .banner p { font-size: .88rem; opacity: .8; margin-top: 4px; }
-  .banner .user-chip { display: flex; align-items: center; gap: 12px; }
-  .avatar { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,.25); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .9rem; color: #fff; flex-shrink: 0; }
-  .banner-row { display: flex; justify-content: space-between; align-items: flex-start; }
-
-  /* ── STATS GRID ── */
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; }
-  .stat-card { background: var(--card); border-radius: var(--radius-sm); padding: 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
-  .stat-card .label { font-size: .78rem; color: var(--text-muted); margin-bottom: 4px; }
-  .stat-card .value { font-size: 1.6rem; font-family: 'Fraunces', serif; font-weight: 600; color: var(--text); }
-  .stat-card .delta { font-size: .78rem; color: var(--green-600); margin-top: 2px; }
-  .stat-card .si { margin-left: auto; margin-top: auto; }
-  .stat-card .si svg { width: 28px; height: 28px; stroke: var(--green-500); fill: none; }
-
-  /* ── TABS ── */
-  .tabs { display: flex; margin: 0 16px 0; border-radius: var(--radius-sm); overflow: hidden; border: 1.5px solid var(--border); background: var(--card); }
-  .tab-btn { flex: 1; padding: 12px; font-size: .88rem; font-family: inherit; font-weight: 500; border: none; cursor: pointer; background: transparent; color: var(--text-muted); transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
-  .tab-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; }
-  .tab-btn.active { background: var(--green-100); color: var(--green-700); }
-
-  /* ── SECTION ── */
-  .section { padding: 16px; }
-  .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-  .section-header h3 { font-size: 1rem; font-weight: 600; }
-  .search-bar { flex: 1; display: flex; align-items: center; gap: 8px; background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; }
-  .search-bar svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; flex-shrink: 0; }
-  .search-bar input { border: none; outline: none; font-family: inherit; font-size: .88rem; color: var(--text); background: transparent; flex: 1; }
-  .filter-btn { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--card); font-family: inherit; font-size: .88rem; cursor: pointer; color: var(--text); }
-  .filter-btn svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; }
-
-  /* ── PATIENT CARD ── */
-  .patient-card { background: var(--card); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 10px; box-shadow: var(--shadow); display: flex; align-items: flex-start; gap: 14px; }
-  .patient-card .info { flex: 1; }
-  .patient-card h4 { font-size: .95rem; font-weight: 600; }
-  .patient-card .meta { font-size: .8rem; color: var(--text-muted); margin-top: 2px; }
-  .patient-card .next { font-size: .78rem; color: var(--text-muted); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
-  .patient-card .next svg { width: 12px; height: 12px; stroke: var(--text-muted); fill: none; }
-  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: .75rem; font-weight: 600; }
-  .badge.active { background: var(--green-100); color: var(--green-700); }
-  .badge.completing { background: #fef3c7; color: #92400e; }
-  .badge.confirmed { background: var(--green-100); color: var(--green-700); }
-  .badge.pending { background: #fef3c7; color: #92400e; }
-  .actions { display: flex; gap: 8px; align-items: center; }
-  .icon-btn { width: 34px; height: 34px; border-radius: 8px; border: 1.5px solid var(--border); background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .15s; }
-  .icon-btn:hover { background: var(--green-50); }
-  .icon-btn svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; }
-
-  /* ── PATIENT VIEW HOME ── */
-  .wellness-progress { background: var(--card); border-radius: var(--radius-sm); margin: 16px; padding: 20px; box-shadow: var(--shadow); }
-  .wellness-progress h3 { font-size: .9rem; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 6px; color: var(--text-muted); }
-  .wellness-progress h3 svg { width: 16px; height: 16px; stroke: var(--green-500); fill: none; }
-  .progress-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  .prog-item { text-align: center; }
-  .prog-item .pval { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; }
-  .prog-item .plabel { font-size: .72rem; color: var(--text-muted); margin-top: 4px; }
-  .prog-bar { height: 4px; border-radius: 2px; background: var(--border); margin-top: 8px; overflow: hidden; }
-  .prog-fill { height: 100%; background: linear-gradient(90deg, var(--green-600), var(--green-400)); border-radius: 2px; }
-
-  /* ── THERAPY CARD ── */
-  .therapy-card { background: var(--card); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 10px; box-shadow: var(--shadow); display: flex; justify-content: space-between; align-items: flex-start; }
-  .therapy-card h4 { font-size: .95rem; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .therapy-card .meta-row { font-size: .8rem; color: var(--text-muted); margin-top: 6px; display: flex; align-items: center; gap: 6px; }
-  .therapy-card .meta-row svg { width: 13px; height: 13px; stroke: var(--text-muted); fill: none; }
-  .btn-reschedule { padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--card); font-family: inherit; font-size: .82rem; cursor: pointer; white-space: nowrap; color: var(--text); transition: background .15s; }
-  .btn-reschedule:hover { background: var(--green-50); }
-
-  /* ── WELLNESS TIPS ── */
-  .tips-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-  .tip-card { background: var(--green-50); border-radius: var(--radius-sm); padding: 14px 10px; text-align: center; }
-  .tip-card .tip-icon { font-size: 1.4rem; margin-bottom: 6px; }
-  .tip-card h5 { font-size: .78rem; font-weight: 600; margin-bottom: 4px; }
-  .tip-card p { font-size: .7rem; color: var(--text-muted); line-height: 1.4; }
-
-  /* ── NOTIFICATIONS ── */
-  .notif-card { background: var(--card); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; box-shadow: var(--shadow); }
-  .notif-card svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
-  .notif-card .notif-text { font-size: .85rem; flex: 1; }
-  .notif-card .notif-time { font-size: .75rem; color: var(--text-muted); margin-top: 3px; }
-
-  /* ── CHAT ── */
-  #page-patient-ayurbot, #page-doctor-assistant {
-    display: flex; flex-direction: column; height: calc(100vh - var(--nav-h));
-  }
-  .chat-header { padding: 16px 20px; background: var(--card); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow); }
-  .chat-avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--green-700), var(--green-500)); display: flex; align-items: center; justify-content: center; }
-  .chat-avatar svg { width: 24px; height: 24px; }
-  .chat-header h3 { font-size: 1rem; font-weight: 600; }
-  .chat-header .status { font-size: .78rem; color: var(--green-600); display: flex; align-items: center; gap: 4px; }
-  .chat-header .status::before { content:''; width: 6px; height: 6px; background: var(--green-500); border-radius: 50%; display: inline-block; }
-  .certified { display: inline-flex; align-items: center; gap: 4px; background: var(--green-100); color: var(--green-700); font-size: .72rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
-  .chat-messages { flex: 1; overflow-y: auto; padding: 20px 16px; display: flex; flex-direction: column; gap: 12px; }
-  .chat-msg { max-width: 80%; }
-  .chat-msg.bot { align-self: flex-end; }
-  .chat-msg.user { align-self: flex-start; }
-  .chat-msg .bubble { padding: 12px 16px; border-radius: 18px; font-size: .9rem; line-height: 1.5; }
-  .chat-msg.bot .bubble { background: var(--card); border: 1px solid var(--border); border-bottom-right-radius: 4px; box-shadow: var(--shadow); }
-  .chat-msg.user .bubble { background: linear-gradient(135deg, var(--green-700), var(--green-600)); color: #fff; border-bottom-left-radius: 4px; }
-  .chat-msg .time { font-size: .72rem; color: var(--text-muted); margin-top: 4px; padding: 0 4px; }
-  .chat-msg.user .time { text-align: right; }
-  .chat-actions { padding: 8px 16px; display: flex; gap: 8px; overflow-x: auto; }
-  .chat-action-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 20px; background: var(--card); font-family: inherit; font-size: .8rem; cursor: pointer; white-space: nowrap; color: var(--text); transition: background .2s; }
-  .chat-action-btn:hover { background: var(--green-100); color: var(--green-700); }
-  .chat-action-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; }
-  .chat-input-row { padding: 12px 16px; background: var(--card); border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: center; }
-  .chat-input { flex: 1; border: 1.5px solid var(--border); border-radius: 24px; padding: 11px 18px; font-family: inherit; font-size: .9rem; outline: none; background: var(--green-50); color: var(--text); transition: border .2s; }
-  .chat-input:focus { border-color: var(--green-500); }
-  .send-btn { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--green-700), var(--green-600)); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity .2s; }
-  .send-btn:hover { opacity: .88; }
-  .send-btn svg { width: 18px; height: 18px; stroke: #fff; fill: none; }
-  .typing { display: flex; gap: 4px; align-items: center; padding: 12px 16px; }
-  .typing span { width: 7px; height: 7px; background: var(--text-muted); border-radius: 50%; animation: bounce 1.2s infinite; }
-  .typing span:nth-child(2) { animation-delay: .2s; }
-  .typing span:nth-child(3) { animation-delay: .4s; }
-  @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
-
-  /* ── SCHEDULE ── */
-  .schedule-slot { background: var(--card); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 10px; box-shadow: var(--shadow); border-left: 4px solid var(--green-500); }
-  .schedule-slot h4 { font-size: .95rem; font-weight: 600; }
-  .schedule-slot .slot-meta { font-size: .82rem; color: var(--text-muted); margin-top: 6px; display: flex; flex-direction: column; gap: 4px; }
-  .schedule-slot .slot-meta div { display: flex; align-items: center; gap: 6px; }
-  .schedule-slot .slot-meta svg { width: 13px; height: 13px; stroke: var(--text-muted); fill: none; }
-
-  /* ── SETTINGS ── */
-  #page-patient-settings, #page-doctor-settings {
-    display: flex; align-items: center; justify-content: center; flex: 1;
-  }
-  .settings-card { background: var(--card); border-radius: var(--radius); padding: 32px; text-align: center; box-shadow: var(--shadow-lg); max-width: 320px; width: 90%; }
-  .settings-card h2 { font-family: 'Fraunces', serif; font-size: 1.3rem; margin-bottom: 8px; }
-  .settings-card p { color: var(--text-muted); font-size: .88rem; margin-bottom: 24px; }
-  .btn-switch { width: 100%; background: linear-gradient(135deg, var(--green-700), var(--green-600)); color: #fff; border: none; border-radius: var(--radius-sm); padding: 13px; font-size: .95rem; font-family: inherit; font-weight: 600; cursor: pointer; margin-bottom: 10px; }
-  .btn-logout { width: 100%; background: transparent; color: var(--text); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 12px; font-size: .95rem; font-family: inherit; cursor: pointer; }
-  .btn-logout:hover { background: var(--green-50); }
-
-  /* ── MODAL ── */
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 200; align-items: flex-end; justify-content: center; }
-  .modal-overlay.open { display: flex; }
-  .modal { background: var(--card); border-radius: var(--radius) var(--radius) 0 0; padding: 24px; width: 100%; max-width: 480px; animation: slideUp .3s ease; }
-  @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
-  .modal h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; margin-bottom: 16px; }
-  .modal-close { float: right; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-muted); }
-  .form-group { margin-bottom: 14px; }
-  .form-group label { display: block; font-size: .82rem; font-weight: 500; margin-bottom: 6px; color: var(--text-muted); }
-  .form-group select, .form-group input { width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 11px 14px; font-family: inherit; font-size: .9rem; color: var(--text); background: var(--green-50); outline: none; }
-  .form-group select:focus, .form-group input:focus { border-color: var(--green-500); }
-
-  /* DOCTOR SCHEDULE PAGE */
-  .doc-schedule-header { background: linear-gradient(135deg, var(--green-800), var(--green-600)); color: #fff; padding: 20px; }
-  .doc-schedule-header h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; }
-  .time-slot { background: var(--card); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 8px; box-shadow: var(--shadow); display: flex; gap: 14px; align-items: center; }
-  .time-slot .time { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; color: var(--green-700); min-width: 70px; }
-  .time-slot .slot-info h4 { font-size: .9rem; font-weight: 600; }
-  .time-slot .slot-info p { font-size: .78rem; color: var(--text-muted); }
-  .empty-state { text-align: center; padding: 48px 24px; color: var(--text-muted); }
-  .empty-state svg { width: 48px; height: 48px; stroke: var(--border); fill: none; margin-bottom: 12px; }
-
-  /* Loading indicator */
-  .loading-dots { display: flex; gap: 5px; }
-  .loading-dots span { width: 8px; height: 8px; background: var(--text-muted); border-radius: 50%; animation: bounce 1.2s infinite; }
-  .loading-dots span:nth-child(2) { animation-delay: .2s; }
-  .loading-dots span:nth-child(3) { animation-delay: .4s; }
-</style> -->
-<link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -246,7 +13,7 @@
 <!-- ═══════════════ LOGIN SCREEN ═══════════════ -->
 <div class="screen active" id="screen-login">
   <div class="login-logo">
-    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 44 44" fill="none">
       <path d="M22 6C22 6 10 14 10 24a12 12 0 0024 0C34 14 22 6 22 6z" stroke="#fff" stroke-width="2" fill="rgba(255,255,255,.2)"/>
       <path d="M22 14v16M15 21h14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
     </svg>
@@ -255,20 +22,52 @@
     <h1>AyurBot</h1>
     <p>Your Panchakarma Therapy Assistant</p>
   </div>
-  <div class="login-card">
-    <h2>Welcome Back</h2>
-    <p class="sub">Sign in to manage your wellness journey</p>
-    <input class="input-field" type="email" id="login-email" placeholder="Email address"/>
-    <input class="input-field" type="password" id="login-pwd" placeholder="Password"/>
-    <p class="error-msg" id="login-error">Invalid credentials. Try patient@ayur.com / doctor@ayur.com</p>
-    <button class="btn-primary" onclick="doLogin()">Sign In</button>
-    <div class="divider">or</div>
-    <button class="btn-secondary" onclick="quickLogin('patient')">Continue as Patient (Demo)</button>
-    <button class="btn-secondary" style="margin-top:8px" onclick="quickLogin('doctor')">Continue as Doctor (Demo)</button>
+
+  <div class="auth-card">
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-signin" onclick="switchAuthTab('signin')">Sign In</button>
+      <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Register</button>
+    </div>
+
+    <!-- SIGN IN -->
+    <div id="form-signin">
+      <h2>Welcome Back</h2>
+      <p class="sub">Sign in to continue your wellness journey</p>
+      <p class="error-msg" id="login-error">Invalid credentials. Please try again.</p>
+      <input class="input-field" type="email" id="login-email" placeholder="Email address"/>
+      <input class="input-field" type="password" id="login-pwd" placeholder="Password"/>
+      <button class="btn-primary" onclick="doLogin()">Sign In</button>
+      <div class="divider">or</div>
+      <button class="btn-secondary" onclick="quickLogin('patient')">Demo – Patient</button>
+      <button class="btn-secondary" style="margin-top:8px" onclick="quickLogin('doctor')">Demo – Doctor</button>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="form-register" style="display:none">
+      <h2>Create Account</h2>
+      <p class="sub">Join AyurBot to manage your therapy</p>
+      <p class="success-msg" id="register-success">Account created! You can now sign in.</p>
+      <p class="error-msg" id="register-error"></p>
+      <input class="input-field" type="text" id="reg-name" placeholder="Full name"/>
+      <input class="input-field" type="email" id="reg-email" placeholder="Email address"/>
+      <input class="input-field" type="password" id="reg-pwd" placeholder="Password (min 6 chars)"/>
+      <input class="input-field" type="password" id="reg-pwd2" placeholder="Confirm password"/>
+      <p style="font-size:.82rem;font-weight:500;color:var(--text-muted);margin-bottom:8px">I am a:</p>
+      <div class="role-selector">
+        <button class="role-btn" id="role-patient" onclick="selectRole('patient')">
+          <span class="role-icon">🧘</span>Patient
+        </button>
+        <button class="role-btn" id="role-doctor" onclick="selectRole('doctor')">
+          <span class="role-icon">👨‍⚕️</span>Doctor
+        </button>
+      </div>
+      <button class="btn-primary" onclick="doRegister()">Create Account</button>
+    </div>
   </div>
+
   <div class="login-features">
     <div class="login-feat">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="#2d6a4f" stroke-width="1.5" fill="none"/></svg></div>
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="#2d6a4f" stroke-width="1.5"/></svg></div>
       <span>Holistic Care</span>
     </div>
     <div class="login-feat">
@@ -284,19 +83,20 @@
 
 <!-- ═══════════════ PATIENT SCREEN ═══════════════ -->
 <div class="screen" id="screen-patient">
-  <!-- HOME PAGE -->
+
+  <!-- HOME -->
   <div class="page active" id="page-patient-home">
     <div class="banner">
       <div class="banner-row">
         <div>
           <div style="font-size:.85rem;opacity:.75;margin-bottom:4px">Day 12 of 21-day program ✓</div>
-          <h2>Namaste, Arjun</h2>
+          <h2 id="patient-greeting">Namaste, Arjun</h2>
           <p>Vata-Pitta Constitution</p>
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-          <div class="avatar">AS</div>
-          <button onclick="goToChat('patient')" style="background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:20px;padding:6px 14px;font-size:.8rem;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:6px">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#fff" stroke-width="2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#fff" stroke-width="2"/></svg>
+          <div class="avatar" id="patient-avatar">AS</div>
+          <button onclick="switchPage('patient','ayurbot')" style="background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:20px;padding:6px 14px;font-size:.8rem;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#fff" stroke-width="2"/></svg>
             Ask AyurBot
           </button>
         </div>
@@ -306,21 +106,9 @@
     <div class="wellness-progress" style="margin:16px 16px 0">
       <h3><svg viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="#4caf82" stroke-width="1.5" fill="none"/></svg> Wellness Progress</h3>
       <div class="progress-grid">
-        <div class="prog-item">
-          <div class="pval">78%</div>
-          <div class="prog-bar"><div class="prog-fill" style="width:78%"></div></div>
-          <div class="plabel">Detox Progress</div>
-        </div>
-        <div class="prog-item">
-          <div class="pval">12</div>
-          <div class="prog-bar"><div class="prog-fill" style="width:57%"></div></div>
-          <div class="plabel">Sessions Completed</div>
-        </div>
-        <div class="prog-item">
-          <div class="pval">9</div>
-          <div class="prog-bar"><div class="prog-fill" style="width:43%"></div></div>
-          <div class="plabel">Days Remaining</div>
-        </div>
+        <div class="prog-item"><div class="pval">78%</div><div class="prog-bar"><div class="prog-fill" style="width:78%"></div></div><div class="plabel">Detox Progress</div></div>
+        <div class="prog-item"><div class="pval">12</div><div class="prog-bar"><div class="prog-fill" style="width:57%"></div></div><div class="plabel">Sessions Completed</div></div>
+        <div class="prog-item"><div class="pval">9</div><div class="prog-bar"><div class="prog-fill" style="width:43%"></div></div><div class="plabel">Days Remaining</div></div>
       </div>
     </div>
 
@@ -329,122 +117,6 @@
         <h3>📅 Upcoming Therapies</h3>
         <button class="btn-reschedule" onclick="switchPage('patient','sessions')">View All</button>
       </div>
-      <div class="therapy-card">
-        <div>
-          <h4>Abhyanga (Oil Massage) <span class="badge confirmed">confirmed</span></h4>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Today at 2:30 PM</div>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg> Dr. Priya Sharma</div>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 101</div>
-        </div>
-        <button class="btn-reschedule" onclick="openReschedule('Abhyanga')">Reschedule</button>
-      </div>
-      <div class="therapy-card">
-        <div>
-          <h4>Shirodhara <span class="badge pending">pending</span></h4>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Tomorrow at 10:00 AM</div>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg> Dr. Rajesh Kumar</div>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 205</div>
-        </div>
-        <button class="btn-reschedule" onclick="openReschedule('Shirodhara')">Reschedule</button>
-      </div>
-      <div class="therapy-card">
-        <div>
-          <h4>Panchakarma Assessment <span class="badge confirmed">confirmed</span></h4>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sep 15 at 9:30 AM</div>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg> Dr. Priya Sharma</div>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Consultation Room</div>
-        </div>
-        <button class="btn-reschedule" onclick="openReschedule('Panchakarma Assessment')">Reschedule</button>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3 style="margin-bottom:12px">🌿 Today's Wellness Tips</h3>
-      <div class="tips-grid">
-        <div class="tip-card">
-          <div class="tip-icon">💧</div>
-          <h5>Stay Hydrated</h5>
-          <p>Drink warm water throughout the day to support detoxification</p>
-        </div>
-        <div class="tip-card">
-          <div class="tip-icon">🌿</div>
-          <h5>Mindful Eating</h5>
-          <p>Eat fresh, warm foods aligned with your dosha</p>
-        </div>
-        <div class="tip-card">
-          <div class="tip-icon">🧘</div>
-          <h5>Gentle Exercise</h5>
-          <p>Practice yoga or walking for 20 minutes daily</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h3 style="margin-bottom:12px">🔔 Recent Notifications</h3>
-      <div class="notif-card">
-        <svg viewBox="0 0 24 24" style="stroke:#3b82f6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        <div>
-          <div class="notif-text">Reminder: Drink your herbal tea before your Abhyanga session today</div>
-          <div class="notif-time">2 hours ago</div>
-        </div>
-      </div>
-      <div class="notif-card">
-        <svg viewBox="0 0 24 24" style="stroke:#22c55e"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-        <div>
-          <div class="notif-text">Your session feedback has been recorded successfully</div>
-          <div class="notif-time">1 day ago</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- AYURBOT PAGE -->
-  <div class="page" id="page-patient-ayurbot" style="display:none;flex-direction:column;height:calc(100vh - 68px)">
-    <div class="chat-header">
-      <div class="chat-avatar">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 6 7 6 13a6 6 0 0012 0C18 7 12 2 12 2z" stroke="#fff" stroke-width="1.8" fill="rgba(255,255,255,.2)"/><path d="M12 8v8M9 11h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-      </div>
-      <div>
-        <h3>AyurBot Assistant <span class="certified">✓ Certified</span></h3>
-        <div class="status">Online</div>
-      </div>
-    </div>
-    <div class="chat-messages" id="patient-chat-messages">
-      <div class="chat-msg bot">
-        <div class="bubble">Namaste! I'm your Panchakarma therapy assistant. How can I help you with your wellness journey today?</div>
-        <div class="time">10:43 AM</div>
-      </div>
-    </div>
-    <div class="chat-actions">
-      <button class="chat-action-btn" onclick="quickPrompt('patient','Schedule a therapy session for me')">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        Schedule Therapy
-      </button>
-      <button class="chat-action-btn" onclick="quickPrompt('patient','What is my current treatment plan?')">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-        View My Plan
-      </button>
-      <button class="chat-action-btn" onclick="quickPrompt('patient','I have a question about my wellness')">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
-        Ask Question
-      </button>
-    </div>
-    <div class="chat-input-row">
-      <input class="chat-input" id="patient-chat-input" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendChat('patient')"/>
-      <button class="send-btn" onclick="sendChat('patient')">
-        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- SESSIONS PAGE -->
-  <div class="page" id="page-patient-sessions">
-    <div class="banner">
-      <h2>My Sessions</h2>
-      <p>Upcoming and past therapy sessions</p>
-    </div>
-    <div class="section">
-      <h3 style="margin-bottom:12px">Upcoming Therapies</h3>
       <div class="therapy-card">
         <div>
           <h4>Abhyanga (Oil Massage) <span class="badge confirmed">confirmed</span></h4>
@@ -461,314 +133,224 @@
         </div>
         <button class="btn-reschedule" onclick="openReschedule('Shirodhara')">Reschedule</button>
       </div>
-      <div class="therapy-card">
-        <div>
-          <h4>Panchakarma Assessment <span class="badge confirmed">confirmed</span></h4>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sep 15 at 9:30 AM</div>
-          <div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg> Dr. Priya Sharma · Consultation Room</div>
-        </div>
-        <button class="btn-reschedule" onclick="openReschedule('Panchakarma Assessment')">Reschedule</button>
+    </div>
+
+    <div class="section">
+      <h3 style="margin-bottom:12px">🌿 Today's Wellness Tips</h3>
+      <div class="tips-grid">
+        <div class="tip-card"><div class="tip-icon">💧</div><h5>Stay Hydrated</h5><p>Drink warm water throughout the day to support detoxification</p></div>
+        <div class="tip-card"><div class="tip-icon">🌿</div><h5>Mindful Eating</h5><p>Eat fresh, warm foods aligned with your dosha</p></div>
+        <div class="tip-card"><div class="tip-icon">🧘</div><h5>Gentle Exercise</h5><p>Practice yoga or walking for 20 minutes daily</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 style="margin-bottom:12px">🔔 Recent Notifications</h3>
+      <div class="notif-card">
+        <svg viewBox="0 0 24 24" style="stroke:#3b82f6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <div><div class="notif-text">Reminder: Drink herbal tea before your Abhyanga session today</div><div class="notif-time">2 hours ago</div></div>
+      </div>
+      <div class="notif-card">
+        <svg viewBox="0 0 24 24" style="stroke:#22c55e"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+        <div><div class="notif-text">Your session feedback has been recorded successfully</div><div class="notif-time">1 day ago</div></div>
       </div>
     </div>
   </div>
 
-  <!-- SETTINGS PAGE (PATIENT) -->
-  <div class="page" id="page-patient-settings">
-    <div class="settings-card">
-      <h2>Settings</h2>
-      <p>Settings panel coming soon...</p>
-      <button class="btn-switch" onclick="switchRole()">Switch to Doctor View</button>
-      <button class="btn-logout" onclick="logout()">Logout</button>
-    </div>
-  </div>
-
-  <!-- PATIENT BOTTOM NAV -->
-  <nav class="bottom-nav" id="nav-patient">
-    <button class="nav-item active" onclick="switchPage('patient','home')" id="pnav-home">
-      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      <span>Home</span>
-    </button>
-    <button class="nav-item" onclick="switchPage('patient','ayurbot')" id="pnav-ayurbot">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      <span>AyurBot</span>
-    </button>
-    <button class="nav-item" onclick="switchPage('patient','sessions')" id="pnav-sessions">
-      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      <span>Sessions</span>
-    </button>
-    <button class="nav-item" onclick="switchPage('patient','settings')" id="pnav-settings">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-      <span>Settings</span>
-    </button>
-  </nav>
-</div>
-
-<!-- ═══════════════ DOCTOR SCREEN ═══════════════ -->
-<div class="screen" id="screen-doctor">
-  <!-- DASHBOARD PAGE -->
-  <div class="page active" id="page-doctor-dashboard">
-    <div class="banner">
-      <div class="banner-row">
-        <div>
-          <h2>Doctor Dashboard</h2>
-          <p>Manage Panchakarma treatments and patient care</p>
-        </div>
-        <div class="user-chip">
-          <div>
-            <div style="font-size:.82rem;font-weight:600">Dr. Priya Sharma</div>
-            <div style="font-size:.75rem;opacity:.75">Ayurvedic Specialist</div>
-          </div>
-          <div class="avatar">Dr</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="label">Total Patients</div>
-        <div class="value">124</div>
-        <div class="delta">+12%</div>
-        <div class="si"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Today's Sessions</div>
-        <div class="value">18</div>
-        <div class="delta">+5%</div>
-        <div class="si"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Completion Rate</div>
-        <div class="value">94%</div>
-        <div class="delta">+2%</div>
-        <div class="si"><svg viewBox="0 0 24 24"><polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/><polyline points="17,6 23,6 23,12"/></svg></div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Active Programs</div>
-        <div class="value">45</div>
-        <div class="delta">+8%</div>
-        <div class="si"><svg viewBox="0 0 24 24"><path d="M23 12a11.05 11.05 0 00-22 0zm-5 7a3 3 0 01-6 0v-7"/></svg></div>
-      </div>
-    </div>
-
-    <div class="tabs">
-      <button class="tab-btn active" id="tab-patients" onclick="switchDocTab('patients')">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-        Patients
-      </button>
-      <button class="tab-btn" id="tab-today" onclick="switchDocTab('today')">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        Today's Schedule
-      </button>
-    </div>
-
-    <!-- Patients tab -->
-    <div class="section" id="doc-patients-tab">
-      <div class="section-header" style="gap:10px">
-        <div class="search-bar" style="max-width:none">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          <input type="text" placeholder="Search patients..." oninput="filterPatients(this.value)"/>
-        </div>
-        <button class="filter-btn">
-          <svg viewBox="0 0 24 24"><polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46"/></svg>
-          Filter
-        </button>
-      </div>
-      <h3 style="margin-bottom:12px">Patient Management</h3>
-      <div id="patient-list">
-        <div class="patient-card" data-name="arjun singh">
-          <div class="avatar" style="background:linear-gradient(135deg,#2d6a4f,#4caf82)">AS</div>
-          <div class="info">
-            <h4>Arjun Singh</h4>
-            <div class="meta">Vata-Pitta · 21-day Detox · 78% complete</div>
-            <div class="next"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Next: Today 2:30 PM</div>
-          </div>
-          <span class="badge active">active</span>
-          <div class="actions">
-            <button class="icon-btn" onclick="viewPatient('Arjun Singh')"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-            <button class="icon-btn" onclick="editPatient('Arjun Singh')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          </div>
-        </div>
-        <div class="patient-card" data-name="meera patel">
-          <div class="avatar" style="background:linear-gradient(135deg,#2d6a4f,#4caf82)">MP</div>
-          <div class="info">
-            <h4>Meera Patel</h4>
-            <div class="meta">Kapha-Vata · Rejuvenation · 45% complete</div>
-            <div class="next"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Next: Tomorrow 10:00 AM</div>
-          </div>
-          <span class="badge active">active</span>
-          <div class="actions">
-            <button class="icon-btn" onclick="viewPatient('Meera Patel')"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-            <button class="icon-btn" onclick="editPatient('Meera Patel')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          </div>
-        </div>
-        <div class="patient-card" data-name="raj kumar">
-          <div class="avatar" style="background:linear-gradient(135deg,#2d6a4f,#4caf82)">RK</div>
-          <div class="info">
-            <h4>Raj Kumar</h4>
-            <div class="meta">Pitta · Stress Relief · 92% complete</div>
-            <div class="next"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Next: Sep 16 9:00 AM</div>
-          </div>
-          <span class="badge completing">completing</span>
-          <div class="actions">
-            <button class="icon-btn" onclick="viewPatient('Raj Kumar')"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-            <button class="icon-btn" onclick="editPatient('Raj Kumar')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Today's Schedule tab -->
-    <div class="section" id="doc-today-tab" style="display:none">
-      <h3 style="margin-bottom:12px">Today's Schedule</h3>
-      <div class="time-slot">
-        <div class="time">9:00 AM</div>
-        <div class="slot-info">
-          <h4>Meera Patel – Abhyanga</h4>
-          <p>Room 101 · Kapha-Vata</p>
-        </div>
-        <span class="badge confirmed" style="margin-left:auto">confirmed</span>
-      </div>
-      <div class="time-slot">
-        <div class="time">10:30 AM</div>
-        <div class="slot-info">
-          <h4>New Patient Consultation</h4>
-          <p>Consultation Room</p>
-        </div>
-        <span class="badge pending" style="margin-left:auto">pending</span>
-      </div>
-      <div class="time-slot">
-        <div class="time">2:30 PM</div>
-        <div class="slot-info">
-          <h4>Arjun Singh – Abhyanga</h4>
-          <p>Room 101 · Vata-Pitta</p>
-        </div>
-        <span class="badge confirmed" style="margin-left:auto">confirmed</span>
-      </div>
-      <div class="time-slot">
-        <div class="time">4:00 PM</div>
-        <div class="slot-info">
-          <h4>Raj Kumar – Assessment</h4>
-          <p>Consultation Room</p>
-        </div>
-        <span class="badge confirmed" style="margin-left:auto">confirmed</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- DOCTOR ASSISTANT PAGE -->
-  <div class="page" id="page-doctor-assistant" style="display:none;flex-direction:column;height:calc(100vh - 68px)">
+  <!-- AYURBOT -->
+  <div class="page" id="page-patient-ayurbot" style="display:none;flex-direction:column;height:calc(100vh - 68px)">
     <div class="chat-header">
-      <div class="chat-avatar">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 6 7 6 13a6 6 0 0012 0C18 7 12 2 12 2z" stroke="#fff" stroke-width="1.8" fill="rgba(255,255,255,.2)"/><path d="M12 8v8M9 11h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-      </div>
+      <div class="chat-avatar"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 6 7 6 13a6 6 0 0012 0C18 7 12 2 12 2z" stroke="#fff" stroke-width="1.8" fill="rgba(255,255,255,.2)"/><path d="M12 8v8M9 11h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
       <div>
         <h3>AyurBot Assistant <span class="certified">✓ Certified</span></h3>
         <div class="status">Online</div>
       </div>
     </div>
-    <div class="chat-messages" id="doctor-chat-messages">
-      <div class="chat-msg bot">
-        <div class="bubble">Namaste, Dr. Sharma! How can I assist you with patient management or treatment planning today?</div>
-        <div class="time">Now</div>
-      </div>
+    <div class="chat-messages" id="patient-chat-messages">
+      <div class="chat-msg bot"><div class="bubble">Namaste! I'm your Panchakarma therapy assistant. How can I help you with your wellness journey today?</div><div class="time">Now</div></div>
+    </div>
+    <div class="chat-actions">
+      <button class="chat-action-btn" onclick="quickPrompt('patient','Schedule a therapy session for me')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Schedule Therapy</button>
+      <button class="chat-action-btn" onclick="quickPrompt('patient','What is my current treatment plan?')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>View My Plan</button>
+      <button class="chat-action-btn" onclick="quickPrompt('patient','I have a question about my wellness')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>Ask Question</button>
     </div>
     <div class="chat-input-row">
-      <input class="chat-input" id="doctor-chat-input" placeholder="Ask about a patient or treatment..." onkeydown="if(event.key==='Enter')sendChat('doctor')"/>
-      <button class="send-btn" onclick="sendChat('doctor')">
-        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
-      </button>
+      <input class="chat-input" id="patient-chat-input" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendChat('patient')"/>
+      <button class="send-btn" onclick="sendChat('patient')"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg></button>
     </div>
   </div>
 
-  <!-- DOCTOR SCHEDULE PAGE -->
-  <div class="page" id="page-doctor-schedule">
-    <div class="doc-schedule-header">
-      <h3>Weekly Schedule</h3>
-      <p style="opacity:.75;font-size:.85rem;margin-top:4px">Manage appointments and sessions</p>
-    </div>
+  <!-- SESSIONS -->
+  <div class="page" id="page-patient-sessions">
+    <div class="banner"><h2>My Sessions</h2><p>Upcoming and past therapy sessions</p></div>
     <div class="section">
-      <h3 style="margin-bottom:12px">Upcoming Sessions</h3>
-      <div class="schedule-slot">
-        <h4>Arjun Singh – Abhyanga</h4>
-        <div class="slot-meta">
-          <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Today at 2:30 PM</div>
-          <div><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 101</div>
-        </div>
-      </div>
-      <div class="schedule-slot">
-        <h4>Meera Patel – Shirodhara</h4>
-        <div class="slot-meta">
-          <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Tomorrow at 10:00 AM</div>
-          <div><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 205</div>
-        </div>
-      </div>
-      <div class="schedule-slot">
-        <h4>Raj Kumar – Panchakarma Assessment</h4>
-        <div class="slot-meta">
-          <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sep 15 at 9:30 AM</div>
-          <div><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Consultation Room</div>
-        </div>
-      </div>
+      <h3 style="margin-bottom:12px">Upcoming Therapies</h3>
+      <div class="therapy-card"><div><h4>Abhyanga (Oil Massage) <span class="badge confirmed">confirmed</span></h4><div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Today at 2:30 PM</div><div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg> Dr. Priya Sharma · Room 101</div></div><button class="btn-reschedule" onclick="openReschedule('Abhyanga')">Reschedule</button></div>
+      <div class="therapy-card"><div><h4>Shirodhara <span class="badge pending">pending</span></h4><div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Tomorrow at 10:00 AM</div><div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg> Dr. Rajesh Kumar · Room 205</div></div><button class="btn-reschedule" onclick="openReschedule('Shirodhara')">Reschedule</button></div>
+      <div class="therapy-card"><div><h4>Panchakarma Assessment <span class="badge confirmed">confirmed</span></h4><div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sep 15 at 9:30 AM</div><div class="meta-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg> Dr. Priya Sharma · Consultation Room</div></div><button class="btn-reschedule" onclick="openReschedule('Panchakarma Assessment')">Reschedule</button></div>
     </div>
   </div>
 
-  <!-- SETTINGS PAGE (DOCTOR) -->
-  <div class="page" id="page-doctor-settings">
+  <!-- SETTINGS (PATIENT) -->
+  <div class="page" id="page-patient-settings">
     <div class="settings-card">
       <h2>Settings</h2>
-      <p>Settings panel coming soon...</p>
-      <button class="btn-switch" onclick="switchRole()">Switch to Patient View</button>
-      <button class="btn-logout" onclick="logout()">Logout</button>
+      <div class="settings-section">
+        <h4>Account</h4>
+        <div class="settings-row"><strong>Name</strong><span id="settings-patient-name">Arjun Singh</span></div>
+        <div class="settings-row"><strong>Email</strong><span id="settings-patient-email">patient@ayur.com</span></div>
+        <div class="settings-row"><strong>Role</strong><span>Patient</span></div>
+      </div>
+      <div class="settings-section">
+        <h4>Program</h4>
+        <div class="settings-row"><strong>Constitution</strong><span>Vata-Pitta</span></div>
+        <div class="settings-row"><strong>Program</strong><span>21-day Detox</span></div>
+        <div class="settings-row"><strong>Doctor</strong><span>Dr. Priya Sharma</span></div>
+      </div>
+      <button class="btn-logout-full" onclick="logout()">Logout</button>
     </div>
   </div>
 
-  <!-- DOCTOR BOTTOM NAV -->
-  <nav class="bottom-nav" id="nav-doctor">
-    <button class="nav-item active" onclick="switchPage('doctor','dashboard')" id="dnav-dashboard">
-      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      <span>Dashboard</span>
-    </button>
-    <button class="nav-item" onclick="switchPage('doctor','assistant')" id="dnav-assistant">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      <span>Assistant</span>
-    </button>
-    <button class="nav-item" onclick="switchPage('doctor','schedule')" id="dnav-schedule">
-      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      <span>Schedule</span>
-    </button>
-    <button class="nav-item" onclick="switchPage('doctor','settings')" id="dnav-settings">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-      <span>Settings</span>
-    </button>
+  <nav class="bottom-nav" id="nav-patient">
+    <button class="nav-item active" onclick="switchPage('patient','home')" id="pnav-home"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg><span>Home</span></button>
+    <button class="nav-item" onclick="switchPage('patient','ayurbot')" id="pnav-ayurbot"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AyurBot</span></button>
+    <button class="nav-item" onclick="switchPage('patient','sessions')" id="pnav-sessions"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Sessions</span></button>
+    <button class="nav-item" onclick="switchPage('patient','settings')" id="pnav-settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Settings</span></button>
   </nav>
 </div>
 
-<!-- ═══════════════ RESCHEDULE MODAL ═══════════════ -->
+<!-- ═══════════════ DOCTOR SCREEN ═══════════════ -->
+<div class="screen" id="screen-doctor">
+
+  <!-- DASHBOARD -->
+  <div class="page active" id="page-doctor-dashboard">
+    <div class="banner">
+      <div class="banner-row">
+        <div><h2>Doctor Dashboard</h2><p>Manage Panchakarma treatments and patient care</p></div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+          <div class="avatar" id="doctor-avatar">Dr</div>
+          <div style="font-size:.75rem;opacity:.85;text-align:right" id="doctor-name-display">Dr. Priya Sharma</div>
+          <div style="font-size:.7rem;opacity:.65">Ayurvedic Specialist</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><div class="label">Total Patients</div><div class="value">124</div><div class="delta">+12%</div><div class="si"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div></div>
+      <div class="stat-card"><div class="label">Today's Sessions</div><div class="value">18</div><div class="delta">+5%</div><div class="si"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div></div>
+      <div class="stat-card"><div class="label">Completion Rate</div><div class="value">94%</div><div class="delta">+2%</div><div class="si"><svg viewBox="0 0 24 24"><polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/><polyline points="17,6 23,6 23,12"/></svg></div></div>
+      <div class="stat-card"><div class="label">Active Programs</div><div class="value">45</div><div class="delta">+8%</div><div class="si"><svg viewBox="0 0 24 24"><path d="M23 12a11.05 11.05 0 00-22 0zm-5 7a3 3 0 01-6 0v-7"/></svg></div></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-patients" onclick="switchDocTab('patients')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Patients</button>
+      <button class="tab-btn" id="tab-today" onclick="switchDocTab('today')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Today's Schedule</button>
+    </div>
+
+    <div class="section" id="doc-patients-tab">
+      <div class="section-header" style="gap:10px;flex-wrap:wrap">
+        <div class="search-bar" style="flex:1;min-width:0"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search patients..." oninput="filterPatients(this.value)"/></div>
+        <button class="filter-btn"><svg viewBox="0 0 24 24"><polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46"/></svg>Filter</button>
+      </div>
+      <h3 style="margin-bottom:12px">Patient Management</h3>
+      <div id="patient-list">
+        <div class="patient-card" data-name="arjun singh">
+          <div class="avatar" style="background:linear-gradient(135deg,#2d6a4f,#4caf82)">AS</div>
+          <div class="info"><h4>Arjun Singh</h4><div class="meta">Vata-Pitta · 21-day Detox · 78% complete</div><div class="next"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Next: Today 2:30 PM</div></div>
+          <span class="badge active">active</span>
+          <div class="actions"><button class="icon-btn" onclick="viewPatient('Arjun Singh')"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="icon-btn" onclick="openEditPatient('Arjun Singh')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button></div>
+        </div>
+        <div class="patient-card" data-name="meera patel">
+          <div class="avatar" style="background:linear-gradient(135deg,#2d6a4f,#4caf82)">MP</div>
+          <div class="info"><h4>Meera Patel</h4><div class="meta">Kapha-Vata · Rejuvenation · 45% complete</div><div class="next"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Next: Tomorrow 10:00 AM</div></div>
+          <span class="badge active">active</span>
+          <div class="actions"><button class="icon-btn" onclick="viewPatient('Meera Patel')"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="icon-btn" onclick="openEditPatient('Meera Patel')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button></div>
+        </div>
+        <div class="patient-card" data-name="raj kumar">
+          <div class="avatar" style="background:linear-gradient(135deg,#2d6a4f,#4caf82)">RK</div>
+          <div class="info"><h4>Raj Kumar</h4><div class="meta">Pitta · Stress Relief · 92% complete</div><div class="next"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Next: Sep 16 9:00 AM</div></div>
+          <span class="badge completing">completing</span>
+          <div class="actions"><button class="icon-btn" onclick="viewPatient('Raj Kumar')"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="icon-btn" onclick="openEditPatient('Raj Kumar')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="doc-today-tab" style="display:none">
+      <h3 style="margin-bottom:12px">Today's Schedule</h3>
+      <div class="time-slot"><div class="time">9:00 AM</div><div class="slot-info"><h4>Meera Patel – Abhyanga</h4><p>Room 101 · Kapha-Vata</p></div><span class="badge confirmed" style="margin-left:auto">confirmed</span></div>
+      <div class="time-slot"><div class="time">10:30 AM</div><div class="slot-info"><h4>New Patient Consultation</h4><p>Consultation Room</p></div><span class="badge pending" style="margin-left:auto">pending</span></div>
+      <div class="time-slot"><div class="time">2:30 PM</div><div class="slot-info"><h4>Arjun Singh – Abhyanga</h4><p>Room 101 · Vata-Pitta</p></div><span class="badge confirmed" style="margin-left:auto">confirmed</span></div>
+      <div class="time-slot"><div class="time">4:00 PM</div><div class="slot-info"><h4>Raj Kumar – Assessment</h4><p>Consultation Room</p></div><span class="badge confirmed" style="margin-left:auto">confirmed</span></div>
+    </div>
+  </div>
+
+  <!-- ASSISTANT -->
+  <div class="page" id="page-doctor-assistant" style="display:none;flex-direction:column;height:calc(100vh - 68px)">
+    <div class="chat-header">
+      <div class="chat-avatar"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 6 7 6 13a6 6 0 0012 0C18 7 12 2 12 2z" stroke="#fff" stroke-width="1.8" fill="rgba(255,255,255,.2)"/><path d="M12 8v8M9 11h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div><h3>AyurBot Assistant <span class="certified">✓ Certified</span></h3><div class="status">Online</div></div>
+    </div>
+    <div class="chat-messages" id="doctor-chat-messages">
+      <div class="chat-msg bot"><div class="bubble">Namaste, Doctor! How can I assist you with patient management or treatment planning today?</div><div class="time">Now</div></div>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="doctor-chat-input" placeholder="Ask about a patient or treatment..." onkeydown="if(event.key==='Enter')sendChat('doctor')"/>
+      <button class="send-btn" onclick="sendChat('doctor')"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg></button>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="page" id="page-doctor-schedule">
+    <div class="banner"><h2>Weekly Schedule</h2><p>Manage appointments and sessions</p></div>
+    <div class="section">
+      <h3 style="margin-bottom:12px">Upcoming Sessions</h3>
+      <div class="schedule-slot"><h4>Arjun Singh – Abhyanga</h4><div class="slot-meta"><div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Today at 2:30 PM</div><div><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 101</div></div></div>
+      <div class="schedule-slot"><h4>Meera Patel – Shirodhara</h4><div class="slot-meta"><div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Tomorrow at 10:00 AM</div><div><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Room 205</div></div></div>
+      <div class="schedule-slot"><h4>Raj Kumar – Panchakarma Assessment</h4><div class="slot-meta"><div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sep 15 at 9:30 AM</div><div><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Consultation Room</div></div></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS (DOCTOR) -->
+  <div class="page" id="page-doctor-settings">
+    <div class="settings-card">
+      <h2>Settings</h2>
+      <div class="settings-section">
+        <h4>Account</h4>
+        <div class="settings-row"><strong>Name</strong><span id="settings-doctor-name">Dr. Priya Sharma</span></div>
+        <div class="settings-row"><strong>Email</strong><span id="settings-doctor-email">doctor@ayur.com</span></div>
+        <div class="settings-row"><strong>Role</strong><span>Doctor</span></div>
+      </div>
+      <div class="settings-section">
+        <h4>Clinic</h4>
+        <div class="settings-row"><strong>Specialty</strong><span>Ayurvedic Specialist</span></div>
+        <div class="settings-row"><strong>Active Patients</strong><span>124</span></div>
+      </div>
+      <button class="btn-logout-full" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" id="nav-doctor">
+    <button class="nav-item active" onclick="switchPage('doctor','dashboard')" id="dnav-dashboard"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg><span>Dashboard</span></button>
+    <button class="nav-item" onclick="switchPage('doctor','assistant')" id="dnav-assistant"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>Assistant</span></button>
+    <button class="nav-item" onclick="switchPage('doctor','schedule')" id="dnav-schedule"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Schedule</span></button>
+    <button class="nav-item" onclick="switchPage('doctor','settings')" id="dnav-settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Settings</span></button>
+  </nav>
+</div>
+
+<!-- RESCHEDULE MODAL -->
 <div class="modal-overlay" id="reschedule-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('reschedule-modal')">×</button>
     <h3>Reschedule Session</h3>
     <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:16px" id="reschedule-therapy-name"></p>
-    <div class="form-group">
-      <label>Preferred Date</label>
-      <input type="date" id="rs-date"/>
-    </div>
-    <div class="form-group">
-      <label>Preferred Time</label>
-      <select id="rs-time">
-        <option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option>
-        <option>12:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Reason (optional)</label>
-      <input type="text" placeholder="e.g. Travel, personal commitment..." id="rs-reason"/>
-    </div>
+    <div class="form-group"><label>Preferred Date</label><input type="date" id="rs-date"/></div>
+    <div class="form-group"><label>Preferred Time</label><select id="rs-time"><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
+    <div class="form-group"><label>Reason (optional)</label><input type="text" placeholder="e.g. Travel, personal commitment..." id="rs-reason"/></div>
     <button class="btn-primary" onclick="submitReschedule()" style="margin-top:8px">Confirm Reschedule</button>
   </div>
 </div>
 
-<!-- ═══════════════ PATIENT DETAIL MODAL ═══════════════ -->
+<!-- PATIENT DETAIL MODAL -->
 <div class="modal-overlay" id="patient-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('patient-modal')">×</button>
@@ -777,258 +359,22 @@
     <button class="btn-primary" style="margin-top:16px" onclick="closeModal('patient-modal')">Close</button>
   </div>
 </div>
-<script src="./script.js"></script>
-<!-- <script>
-// ── STATE ──
-let currentRole = null;
-let API_BASE = ''; // Set your backend URL here e.g. 'http://localhost:3000'
 
-// ── AUTH ──
-const DEMO_USERS = {
-  'patient@ayur.com': { password: 'patient123', role: 'patient' },
-  'doctor@ayur.com':  { password: 'doctor123',  role: 'doctor'  }
-};
+<!-- EDIT PATIENT MODAL -->
+<div class="modal-overlay" id="edit-patient-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('edit-patient-modal')">×</button>
+    <h3>Edit Patient</h3>
+    <div class="form-group"><label>Full Name</label><input type="text" id="ep-name"/></div>
+    <div class="form-group"><label>Constitution</label><select id="ep-constitution"><option>Vata</option><option>Pitta</option><option>Kapha</option><option>Vata-Pitta</option><option>Pitta-Kapha</option><option>Kapha-Vata</option><option>Tridosha</option></select></div>
+    <div class="form-group"><label>Program</label><select id="ep-program"><option>21-day Detox</option><option>Rejuvenation</option><option>Stress Relief</option><option>Weight Management</option><option>Immunity Boost</option></select></div>
+    <div class="form-group"><label>Progress (%)</label><input type="number" id="ep-progress" min="0" max="100"/></div>
+    <div class="form-group"><label>Status</label><select id="ep-status"><option value="active">Active</option><option value="completing">Completing</option><option value="completed">Completed</option></select></div>
+    <div class="form-group"><label>Notes</label><textarea id="ep-notes" placeholder="Clinical notes..."></textarea></div>
+    <button class="btn-primary" onclick="submitEditPatient()" style="margin-top:4px">Save Changes</button>
+  </div>
+</div>
 
-function doLogin() {
-  const email = document.getElementById('login-email').value.trim();
-  const pwd   = document.getElementById('login-pwd').value.trim();
-  const errEl = document.getElementById('login-error');
-  
-  // Try demo credentials
-  const user = DEMO_USERS[email];
-  if (user && user.password === pwd) {
-    errEl.style.display = 'none';
-    enterApp(user.role);
-    return;
-  }
-  
-  // If you have a backend, uncomment:
-  loginFromBackend(email, pwd);
-  
-  errEl.style.display = 'block';
-}
-
-function quickLogin(role) { enterApp(role); }
-
-async function loginFromBackend(email, pwd) {
-  try {
-    const res = await fetch(`${API_BASE}/api/auth/login`, {
-      method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ email, password: pwd })
-    });
-    const data = await res.json();
-    if (data.token) {
-      localStorage.setItem('ayur_token', data.token);
-      enterApp(data.role);
-    } else {
-      document.getElementById('login-error').style.display = 'block';
-    }
-  } catch(e) { document.getElementById('login-error').style.display = 'block'; }
-}
-
-function enterApp(role) {
-  currentRole = role;
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(`screen-${role}`).classList.add('active');
-}
-
-function logout() { enterApp('login'); currentRole = null; }
-
-function switchRole() {
-  const newRole = currentRole === 'patient' ? 'doctor' : 'patient';
-  enterApp(newRole);
-}
-
-// Override enterApp for login screen
-function enterApp(role) {
-  currentRole = role;
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  if (role === 'login') {
-    document.getElementById('screen-login').classList.add('active');
-  } else {
-    document.getElementById(`screen-${role}`).classList.add('active');
-  }
-}
-
-// ── PAGE SWITCHING ──
-function switchPage(role, page) {
-  // Hide all pages in role's screen
-  const screen = document.getElementById(`screen-${role}`);
-  screen.querySelectorAll('.page').forEach(p => {
-    p.classList.remove('active');
-    p.style.display = 'none';
-  });
-  
-  // Show target page
-  const target = document.getElementById(`page-${role}-${page}`);
-  if (target) {
-    if (page === 'ayurbot' || page === 'assistant') {
-      target.style.display = 'flex';
-    } else if (page === 'settings') {
-      target.style.display = 'flex';
-    } else {
-      target.style.display = 'block';
-    }
-    target.classList.add('active');
-  }
-
-  // Update nav
-  const prefix = role === 'patient' ? 'pnav' : 'dnav';
-  screen.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const navItem = document.getElementById(`${prefix}-${page}`);
-  if (navItem) navItem.classList.add('active');
-}
-
-function switchDocTab(tab) {
-  document.getElementById('doc-patients-tab').style.display = tab === 'patients' ? 'block' : 'none';
-  document.getElementById('doc-today-tab').style.display = tab === 'today' ? 'block' : 'none';
-  document.getElementById('tab-patients').classList.toggle('active', tab === 'patients');
-  document.getElementById('tab-today').classList.toggle('active', tab === 'today');
-}
-
-function goToChat(role) {
-  if (role === 'patient') switchPage('patient', 'ayurbot');
-  else switchPage('doctor', 'assistant');
-}
-
-// ── CHAT ──
-const SYSTEM_PROMPT_PATIENT = `You are AyurBot, an Ayurvedic Panchakarma therapy assistant for patients. The current patient is Arjun Singh with Vata-Pitta constitution on Day 12 of a 21-day detox program. Be warm, supportive, and concise. Provide guidance about Panchakarma therapies, Ayurvedic lifestyle, and answer scheduling questions. Keep responses brief (2-4 sentences max).`;
-
-const SYSTEM_PROMPT_DOCTOR = `You are AyurBot, an AI assistant for Dr. Priya Sharma, an Ayurvedic Specialist. Help with patient management, treatment planning, and clinical queries. Current patients: Arjun Singh (Vata-Pitta, 21-day Detox, 78%), Meera Patel (Kapha-Vata, Rejuvenation, 45%), Raj Kumar (Pitta, Stress Relief, 92%). Be professional and concise (2-4 sentences max).`;
-
-const chatHistory = { patient: [], doctor: [] };
-
-async function sendChat(role) {
-  const inputEl = document.getElementById(`${role}-chat-input`);
-  const msg = inputEl.value.trim();
-  if (!msg) return;
-  inputEl.value = '';
-
-  addChatMsg(role, 'user', msg);
-  chatHistory[role].push({ role: 'user', content: msg });
-
-  // Show typing
-  const typingEl = addTyping(role);
-
-  try {
-    const systemPrompt = role === 'patient' ? SYSTEM_PROMPT_PATIENT : SYSTEM_PROMPT_DOCTOR;
-    
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: systemPrompt,
-        messages: chatHistory[role]
-      })
-    });
-    const data = await res.json();
-    typingEl.remove();
-    
-    const reply = data.content?.[0]?.text || 'I apologize, I could not process that. Please try again.';
-    chatHistory[role].push({ role: 'assistant', content: reply });
-    addChatMsg(role, 'bot', reply);
-  } catch(e) {
-    typingEl.remove();
-    const fallback = getFallback(msg);
-    chatHistory[role].push({ role: 'assistant', content: fallback });
-    addChatMsg(role, 'bot', fallback);
-  }
-}
-
-function getFallback(msg) {
-  const m = msg.toLowerCase();
-  if (m.includes('schedule') || m.includes('book')) return 'I can help you schedule a therapy session. Please use the Sessions tab or let me know your preferred date and time.';
-  if (m.includes('plan') || m.includes('treatment')) return 'Your current treatment plan includes Abhyanga, Shirodhara, and Panchakarma Assessment. You are 78% through your 21-day detox program.';
-  if (m.includes('dosha') || m.includes('vata') || m.includes('pitta')) return 'As a Vata-Pitta type, you benefit from warm, grounding therapies like Abhyanga and calming practices like Shirodhara to balance your constitution.';
-  return 'Namaste! I\'m here to support your Panchakarma journey. For personalized advice, please consult Dr. Priya Sharma during your next session.';
-}
-
-function addChatMsg(role, sender, text) {
-  const container = document.getElementById(`${role}-chat-messages`);
-  const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-  const div = document.createElement('div');
-  div.className = `chat-msg ${sender === 'bot' ? 'bot' : 'user'}`;
-  div.innerHTML = `<div class="bubble">${text}</div><div class="time">${now}</div>`;
-  container.appendChild(div);
-  container.scrollTop = container.scrollHeight;
-  return div;
-}
-
-function addTyping(role) {
-  const container = document.getElementById(`${role}-chat-messages`);
-  const div = document.createElement('div');
-  div.className = 'chat-msg bot';
-  div.innerHTML = '<div class="bubble"><div class="loading-dots"><span></span><span></span><span></span></div></div>';
-  container.appendChild(div);
-  container.scrollTop = container.scrollHeight;
-  return div;
-}
-
-function quickPrompt(role, text) {
-  document.getElementById(`${role}-chat-input`).value = text;
-  sendChat(role);
-}
-
-// ── MODALS ──
-function openReschedule(name) {
-  document.getElementById('reschedule-therapy-name').textContent = name;
-  document.getElementById('rs-date').value = new Date().toISOString().split('T')[0];
-  document.getElementById('reschedule-modal').classList.add('open');
-}
-
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-
-function submitReschedule() {
-  const date = document.getElementById('rs-date').value;
-  const time = document.getElementById('rs-time').value;
-  closeModal('reschedule-modal');
-  showToast(`Session rescheduled to ${date} at ${time}`);
-  // POST to backend: fetch(`${API_BASE}/api/sessions/reschedule`, {...})
-}
-
-// ── PATIENT ACTIONS ──
-function viewPatient(name) {
-  document.getElementById('patient-modal-name').textContent = name;
-  const info = {
-    'Arjun Singh': `<div style="color:var(--text-muted);font-size:.85rem;line-height:1.8"><p><b>Constitution:</b> Vata-Pitta</p><p><b>Program:</b> 21-day Detox</p><p><b>Progress:</b> 78% (Day 12)</p><p><b>Next Session:</b> Today 2:30 PM – Abhyanga</p><p><b>Doctor:</b> Dr. Priya Sharma</p></div>`,
-    'Meera Patel': `<div style="color:var(--text-muted);font-size:.85rem;line-height:1.8"><p><b>Constitution:</b> Kapha-Vata</p><p><b>Program:</b> Rejuvenation</p><p><b>Progress:</b> 45%</p><p><b>Next Session:</b> Tomorrow 10:00 AM</p><p><b>Doctor:</b> Dr. Priya Sharma</p></div>`,
-    'Raj Kumar':   `<div style="color:var(--text-muted);font-size:.85rem;line-height:1.8"><p><b>Constitution:</b> Pitta</p><p><b>Program:</b> Stress Relief</p><p><b>Progress:</b> 92%</p><p><b>Next Session:</b> Sep 16 9:00 AM</p><p><b>Doctor:</b> Dr. Priya Sharma</p></div>`
-  };
-  document.getElementById('patient-modal-content').innerHTML = info[name] || '';
-  document.getElementById('patient-modal').classList.add('open');
-}
-
-function editPatient(name) { showToast(`Edit mode for ${name} — connect to your backend`); }
-
-function filterPatients(query) {
-  const cards = document.querySelectorAll('#patient-list .patient-card');
-  const q = query.toLowerCase();
-  cards.forEach(c => {
-    c.style.display = c.dataset.name.includes(q) ? 'flex' : 'none';
-  });
-}
-
-// ── TOAST ──
-function showToast(msg) {
-  const t = document.createElement('div');
-  t.textContent = msg;
-  Object.assign(t.style, {
-    position:'fixed', bottom:'90px', left:'50%', transform:'translateX(-50%)',
-    background:'var(--green-800)', color:'#fff', padding:'10px 20px',
-    borderRadius:'20px', fontSize:'.85rem', zIndex:'999', whiteSpace:'nowrap',
-    boxShadow:'0 4px 16px rgba(0,0,0,.2)', animation:'fadeIn .3s ease'
-  });
-  document.body.appendChild(t);
-  setTimeout(() => t.remove(), 3000);
-}
-
-// Close modals on overlay click
-document.querySelectorAll('.modal-overlay').forEach(o => {
-  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
-});
-</script> -->
 
 
 </body>
