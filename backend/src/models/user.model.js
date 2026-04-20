@@ -22,6 +22,13 @@ const userSchema =  new mongoose.Schema({
         required : true
 
     },
+    dob:{
+        type : Date,
+    },
+    gender:{
+        type :String,
+        enum:['Male', 'Female', "others"],
+    },
     password:{
         type : String,
         required : true
@@ -37,15 +44,6 @@ const userSchema =  new mongoose.Schema({
         default : 'patient'
     },
     
-
-    patient_info : {
-        prakriti : {
-            type : String,
-            enum : ['Vata', 'Pitta', 'Kapha'],
-            default : null
-        }
-    },
-
     doctor_info : {
         specialization : {
             type : String,

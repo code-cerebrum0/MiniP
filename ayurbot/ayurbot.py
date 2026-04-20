@@ -25,9 +25,10 @@ from pymongo import MongoClient
 from datetime import datetime
 
 llm = ChatOpenAI(
-    base_url="http://localhost:1234/v1",
+    # base_url="http://localhost:1234/v1",
+    base_url="http://localhost:11434/v1",
     api_key="lm-studio",
-    model="local-model"
+    model="qwen3:4b"
 )
 
 client = MongoClient("mongodb://localhost:27017/")
@@ -464,3 +465,7 @@ async def chat(req : ReqBody):
 
 async def load_history(user_id : str):
     pass
+
+
+if __name__ == "__main__":
+    start_session("fsdff")

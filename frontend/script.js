@@ -158,6 +158,8 @@ async function sendChat(role) {
   chatHistory[role].push({ role: 'user', content: msg });
   const typing = addTyping(role);
   try {
+
+    // ------------------------------------------------- Logic for Ayurbot ----- yahaan add krna hofga------------------------------------
     const res  = await fetch('https://api.anthropic.com/v1/messages', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1000, system: PROMPTS[role], messages: chatHistory[role] }) });
     const data = await res.json();
     typing.remove();
@@ -220,7 +222,7 @@ const PATIENT_DATA = {
   'Arjun Singh': { constitution:'Vata-Pitta', program:'21-day Detox', progress:'78% (Day 12)', next:'Today 2:30 PM – Abhyanga', doctor:'Dr. Priya Sharma' },
   'Meera Patel':  { constitution:'Kapha-Vata', program:'Rejuvenation',  progress:'45%',           next:'Tomorrow 10:00 AM',          doctor:'Dr. Priya Sharma' },
   'Raj Kumar':    { constitution:'Pitta',       program:'Stress Relief', progress:'92%',           next:'Sep 16 9:00 AM',             doctor:'Dr. Priya Sharma' }
-};
+}; 
 
 function viewPatient(name) {
   const d = PATIENT_DATA[name];
@@ -248,7 +250,8 @@ function submitEditPatient() {
   const name = document.getElementById('ep-name').value;
   closeModal('edit-patient-modal');
   showToast(`${name} updated successfully`);
-  // Backend: fetch(`${API_BASE}/api/patients/:id`, { method:'PUT', body: JSON.stringify({...}) })
+  // Backend: 
+  // fetch(`${API_BASE}/api/patients/:id`, { method:'PUT', body: JSON.stringify({...}) })
 }
 
 function filterPatients(query) {

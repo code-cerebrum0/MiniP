@@ -2,3 +2,5 @@
 testing/node_modules/
 testing/src/
 /ayurbot/__pycache__/*
+.env
+backend/.env
