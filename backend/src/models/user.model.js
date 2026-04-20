@@ -12,7 +12,7 @@ const userSchema =  new mongoose.Schema({
         unique: true,
         index: true,
     },
-    fullName:{
+    name:{
         type : String,
         required : true
     },
@@ -21,15 +21,6 @@ const userSchema =  new mongoose.Schema({
         unique : true,
         required : true
 
-    },
-    dob:{
-        type : Date,
-        required : true
-    },
-    gender:{
-        type :String,
-        enum:['Male', 'Female', "others"],
-        required : true
     },
     password:{
         type : String,

@@ -1,7 +1,7 @@
 let currentRole = null;
 let currentUser = null;
 let selectedRole = null;
-const API_BASE = ''; // e.g. 'http://localhost:3000'
+const API_BASE = 'http://localhost:3000';
 const chatHistory = { patient: [], doctor: [] };
 
 const DEMO_USERS = {
@@ -72,7 +72,8 @@ function doRegister() {
   if (pwd.length < 6) { errEl.textContent = 'Password must be at least 6 characters.'; errEl.style.display = 'block'; return; }
   if (pwd !== pwd2)   { errEl.textContent = 'Passwords do not match.'; errEl.style.display = 'block'; return; }
 
-  // Uncomment for backend: registerFromBackend(name, email, pwd, selectedRole);
+  // Uncomment for backend: 
+  registerFromBackend(name, email, pwd, selectedRole);
 
   okEl.style.display = 'block';
   setTimeout(() => { switchAuthTab('signin'); document.getElementById('login-email').value = email; }, 1500);
@@ -81,6 +82,7 @@ function doRegister() {
 async function registerFromBackend(name, email, pwd, role) {
   try {
     const res  = await fetch(`${API_BASE}/api/auth/register`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name, email, password: pwd, role }) });
+    console.log(res)
     const data = await res.json();
     if (data.token) { localStorage.setItem('ayur_token', data.token); currentUser = data.user; enterApp(role); }
     else { document.getElementById('register-error').textContent = data.message || 'Registration failed.'; document.getElementById('register-error').style.display = 'block'; }

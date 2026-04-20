@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 // has to implement hashing of passwords
 
 async function  registerUser (req, res) { 
-    const {fullName, email, password, dob, gender, role = "patient"} = req.body;
+    const {name, email, password,  role = "patient"} = req.body;
 
     const isUserAlreadyExists= await userModel.findOne({email})
 
@@ -22,11 +22,9 @@ async function  registerUser (req, res) {
 
 
     const user  = await userModel.create({
-        fullName,
+        name,
         email,
         password  : hash,
-        dob,
-        gender,
         role
     })
 
@@ -41,7 +39,7 @@ async function  registerUser (req, res) {
     res.status(201).json({
         message:"User created successfully...",
         user:{
-            name: user.fullName,
+            name: user.name,
             email: user.email,
         }
     })
@@ -84,7 +82,7 @@ async function loginUser (req ,res){
         role : user.role,
         user : {
             id : user.user_id,
-            name : user.fullName,
+            name : user.name,
             email : user.email
         },
         
