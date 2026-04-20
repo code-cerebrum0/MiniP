@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 
 // has to implement hashing of passwords
 
-async function registerUser (req, res) { 
+async function  registerUser (req, res) { 
     const {fullName, email, password, dob, gender, role = "patient"} = req.body;
 
     const isUserAlreadyExists= await userModel.findOne({email})
@@ -71,7 +71,7 @@ async function loginUser (req ,res){
     }
 
     const token = jwt.sign({
-        id : user._id,
+        id : user.user_id,
         email : user.email,
         role : user.role
     }, process.env.JWT_SECRET_KEY)
@@ -80,7 +80,14 @@ async function loginUser (req ,res){
     res.cookie("token", token);
 
     res.status(200).json({
-        message: "User logged in successfully."
+        token : token,
+        role : user.role,
+        user : {
+            id : user.user_id,
+            name : user.fullName,
+            email : user.email
+        },
+        
     })
 
 

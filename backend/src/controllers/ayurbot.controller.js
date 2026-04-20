@@ -17,9 +17,9 @@ async function chatWithLLM (req, res){
         // })
     }
     catch(error){
-        console.log("This errpr")
+        console.log("This errpr:",error)
         res.status(500).json({
-            error: "This error"
+            error: error
         })
     }
 }
